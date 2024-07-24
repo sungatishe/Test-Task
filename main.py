@@ -6,6 +6,9 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
+# This function categorizes files based on their extensions within a specified directory and its subdirectories.
+# It can optionally filter files by their modification dates, only including those modified within the specified
+# date range.
 def categorize_files_by_type(folder_path, min_time=None, max_time=None):
     dic = defaultdict(list)
 
@@ -45,6 +48,7 @@ def categorize_files_by_type(folder_path, min_time=None, max_time=None):
     return dic
 
 
+# Converts a date string in 'YYYYMMDD' format to a Unix timestamp.
 def convert_date(date_str):
     try:
         return int(datetime.strptime(date_str, "%Y%m%d").timestamp())
@@ -54,8 +58,7 @@ def convert_date(date_str):
 
 
 # Enter your path (e.g. "/Users/User/Documents")
-path = "/Users/arapbaysungat/Desktop"
-
+path = "/Users/"
 
 result = categorize_files_by_type(
     path,
